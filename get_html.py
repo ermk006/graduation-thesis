@@ -1,7 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-response = requests.get('https://maquia.hpplus.jp/makeup/')
+response = requests.get('https://maquia.hpplus.jp/makeup/news/')
 soup = BeautifulSoup(response.text,'lxml')
-title = soup.title.string
-print(title)
+articles = soup.findAll('div', class_='article-card-media')
+for article in articles:
+   print(article)
